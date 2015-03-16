@@ -1,8 +1,7 @@
-#include <Windows.h>
 #include <iostream>
 
 // Include GLFW
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 extern GLFWwindow* glfwwindow; // The "extern" keyword here is to access the variable "window" declared in tutorialXXX.cpp. This is a hack to keep the tutorials simple. Please avoid this.
 
 // Include GLM
@@ -86,8 +85,6 @@ void computeMatricesFromInputs(){
 		}
 
 		else{
-
-			ShowCursor(false);
 			ogxpos = xpos;
 			ogypos = ypos;
 			glfwSetCursorPos(glfwwindow, windowX / 2, windowY / 2);
@@ -97,7 +94,6 @@ void computeMatricesFromInputs(){
 	}
 
 	if (glfwGetMouseButton(glfwwindow, GLFW_MOUSE_BUTTON_1) == GLFW_RELEASE && hasClicked){
-		ShowCursor(true);
 		glfwSetCursorPos(glfwwindow, ogxpos, ogypos);
 		hasClicked = false;
 	}

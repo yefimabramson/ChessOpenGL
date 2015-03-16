@@ -1,5 +1,5 @@
 #pragma once
-#include <playground/Piece.h>
+#include <Piece.h>
 
 #include <iostream>
 using namespace std;

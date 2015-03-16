@@ -1,5 +1,5 @@
 #pragma once
-#include <playground/Board.h>
+#include <Board.h>
 
 #include <iostream>
 #include <vector>

@@ -1,11 +1,11 @@
 #ifndef PIECE_H
 #define PIECE_H
 
-#include <playground\Window.h>
+#include <Window.h>
 //#include <playground/Board.h>
 #include <vector>
 //#include <GL/glew.h>
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 using namespace std;
 using namespace glm;

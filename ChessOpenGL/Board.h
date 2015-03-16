@@ -1,10 +1,10 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#include <playground/Window.h>
-#include <playground/Piece.h>
+#include <Window.h>
+#include <Piece.h>
 #include <GL/glew.h>
-#include <glfw3.h>
+#include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 using namespace std;
 using namespace glm;
