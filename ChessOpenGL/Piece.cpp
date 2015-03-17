@@ -1,6 +1,7 @@
 #include "Piece.h"
 
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 // Include GLM
@@ -166,7 +167,7 @@ void King::getMoves(vector<vector<Piece*> > board)
 	else if (x < 9 && y > 0 && board[x + 1][y - 1][0].color != color) { addMove(canEat, { x + 1, y - 1 }); }
 	//for (vector<int> move : moves){ for (int place : move){ cout << place; } cout << endl; }
 }
-void Queen::getMoves(vector<vector<Piece*>> board)
+void Queen::getMoves(vector<vector<Piece*> > board)
 {
 	moves.clear();
 	for (int x1 = x - 1; x1 > 1; x1--)
@@ -244,7 +245,7 @@ void Queen::getMoves(vector<vector<Piece*>> board)
 	}
 	//for (vector<int> move : moves){ for (int place : move){ cout << place; } cout << endl; }
 }
-void Bishop::getMoves(vector<vector<Piece*>> board)
+void Bishop::getMoves(vector<vector<Piece*> > board)
 {
 	moves.clear();
 	for (int count1 = 1; count1 < x && count1 < y; count1++)
@@ -285,7 +286,7 @@ void Bishop::getMoves(vector<vector<Piece*>> board)
 	}
 	//for (vector<int> move : moves){ for (int place : move){ cout << place; } cout << endl; }
 }
-void Knight::getMoves(vector<vector<Piece*>> board)
+void Knight::getMoves(vector<vector<Piece*> > board)
 {
 	moves.clear();
 	if (x < 9 && y < 8 && board[x + 1][y + 2] == NULL){ addMove(moves, { x + 1, y + 2 }); }
@@ -305,7 +306,7 @@ void Knight::getMoves(vector<vector<Piece*>> board)
 	if (x > 1 && y < 9 && board[x - 1][y + 1] == NULL){ addMove(moves, { x - 2, y + 1 }); }
 	else if (x > 1 && y < 9 && board[x - 1][y + 1][0].color != color){ addMove(canEat, { x - 2, y + 1 }); }
 }
-void Rook::getMoves(vector<vector<Piece*>> board)
+void Rook::getMoves(vector<vector<Piece*> > board)
 {
 	moves.clear();
 	for (int x1 = x - 1; x1 > 1; x1--)
@@ -346,7 +347,7 @@ void Rook::getMoves(vector<vector<Piece*>> board)
 	}
 	//for (vector<int> move : moves){ for (int place : move){ cout << place; } cout << endl; }
 }
-void Pawn::getMoves(vector<vector<Piece*>> board)
+void Pawn::getMoves(vector<vector<Piece*> > board)
 {
 	moves.clear();
 	canEat.clear();
