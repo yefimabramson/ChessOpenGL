@@ -22,16 +22,16 @@ GLFWwindow* glfwwindow;
 #include <glm/gtx/transform.hpp>
 using namespace glm;
 
-#include <common/shader.hpp>
-#include <common/texture.hpp>
-#include <common/controls.hpp>
-#include <common/objloader.hpp>
-#include <common/vboindexer.hpp>
-#include <common/text2D.hpp>
+#include "common/shader.hpp"
+#include "common/texture.hpp"
+#include "common/controls.hpp"
+#include "common/objloader.hpp"
+#include "common/vboindexer.hpp"
+#include "common/text2D.hpp"
 
-#include <Window.h>
-#include <Board.h>
-#include <Piece.h>
+#include "Window.h"
+#include "Board.h"
+#include "Piece.h"
 
 float scaleFactor = 0.0625f;
 float squareLength;
@@ -264,11 +264,11 @@ int main(void)
 	squareRadius = squareLength / 2;
 	piecescalefactor = squareRadius / kingradius;
 	piecescalefactor *= .90f;
-	pieceScalingMatrix = scale(piecescalefactor, piecescalefactor, piecescalefactor);
+	pieceScalingMatrix = scale(mat4(1.0f), vec3(piecescalefactor, piecescalefactor, piecescalefactor));
 	startX = squareRadius - 4 * squareLength;
 	startY = -squareRadius + 4 * squareLength;
 
-	mat4 boardScalingMatrix = glm::scale(scaleFactor, scaleFactor, scaleFactor);
+	mat4 boardScalingMatrix = scale(mat4(1.0f), vec3(scaleFactor, scaleFactor, scaleFactor));
 	mat4 boardModelMatrix = boardScalingMatrix;
 
 	Board board = Board(boardvertexbuffer, boarduvbuffer, boardnormalbuffer, boardvertices.size());

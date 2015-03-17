@@ -1,5 +1,4 @@
-#pragma once
-#include <Board.h>
+#include "Board.h"
 
 #include <iostream>
 #include <vector>
@@ -10,7 +9,7 @@ using namespace std;
 #include <glm/gtx/transform.hpp>
 using namespace glm;
 
-#include <common/texture.hpp>
+#include "common/texture.hpp"
 
 extern float scaleFactor;
 
@@ -19,7 +18,7 @@ const char * testFile = "suzanne.obj";
 int size;
 GLuint textureChecker;
 GLuint textureWood;
-vector<vector<Piece*>> board(9, vector<Piece*>(9, NULL));
+vector<vector<Piece*> > board(9, vector<Piece*>(9, NULL));
 
 mat4 ScalingMatrix, ModelMatrix;
 GLuint vertexbuffer, uvbuffer, normalbuffer;
@@ -33,7 +32,7 @@ Board::Board(GLuint vb, GLuint ub, GLuint nb, int s){
 	textureWood = loadBMP_custom("Wood.bmp");
 
 	//length *= scaleFactor;
-	ScalingMatrix = scale(scaleFactor, scaleFactor, scaleFactor);
+	ScalingMatrix = scale(mat4(1.0f), vec3(scaleFactor, scaleFactor, scaleFactor));
 	ModelMatrix = ScalingMatrix;
 }
 void Board::draw(Window window, mat4 ProjectionMatrix, mat4 ViewMatrix)

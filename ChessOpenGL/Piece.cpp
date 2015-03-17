@@ -1,5 +1,4 @@
-#pragma once
-#include <Piece.h>
+#include "Piece.h"
 
 #include <iostream>
 using namespace std;
@@ -21,7 +20,7 @@ mat4 whiteknightRotationMatrix = rotate(mat4(1.0f), -90.0f, vec3(0, 1, 0));
 mat4 blackknightRotationMatrix = rotate(mat4(1.0f), 90.0f, vec3(0, 1, 0));
 
 
-void addMove(vector<vector<int>> &moves, vector<int> move)
+void addMove(vector<vector<int> > &moves, vector<int> move)
 {
 	moves.reserve(moves.size() + 1);
 	moves.resize(moves.size() + 1);
@@ -30,7 +29,7 @@ void addMove(vector<vector<int>> &moves, vector<int> move)
 
 mat4 getTranslationMatrix(int x, int y)
 {
-	return translate(startX + (x - 1) * squareLength, 0.0001f, startY - (y - 1) * squareLength);
+	return translate(mat4(1.0f), vec3(startX + (x - 1) * squareLength, 0.0001f, startY - (y - 1) * squareLength));
 }
 
 Piece::Piece(int x, int y){ this->x = x; this->y = y; }
@@ -102,7 +101,7 @@ void Piece::draw(Window window, mat4 ProjectionMatrix, mat4 ViewMatrix)
 	glDrawArrays(GL_TRIANGLES, 0, size);
 }
 
-bool Piece::moveTo(int x, int y, vector<vector<Piece*>> board)
+bool Piece::moveTo(int x, int y, vector<vector<Piece*> > board)
 {
 	getMoves(board);
 	if (find(moves.begin(), moves.end(), vector<int>{ x, y }) != moves.end())
@@ -130,7 +129,7 @@ bool Piece::moveTo(int x, int y, vector<vector<Piece*>> board)
 		return false;
 	}
 }
-bool Pawn::moveTo(int x, int y, vector<vector<Piece*>> board)
+bool Pawn::moveTo(int x, int y, vector<vector<Piece*> > board)
 {
 	bool moved = Piece::moveTo(x, y, board);
 	if (moved){ firstMove = false; }
@@ -146,7 +145,7 @@ void Knight::rotate(mat4 RotationMatrix)
 }
 
 //void Piece::getMoves(vector<vector<Piece*>> board){}
-void King::getMoves(vector<vector<Piece*>> board)
+void King::getMoves(vector<vector<Piece*> > board)
 {
 	moves.clear();
 	if (x < 9 && board[x + 1][y] == NULL) { addMove(moves, { x + 1, y }); }
